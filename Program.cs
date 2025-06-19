@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static System.Console;
 
 namespace VirtualPetSimulator
@@ -8,44 +9,29 @@ namespace VirtualPetSimulator
         static void Main(string[] args)
         {
             Title = "=== Virtual Pet Simulator ===";
+            WriteLine("Welcome to the pet simulator!\n");
 
-            WriteLine(@"
- __      __  _       _             _   _      _   
- \ \    / / (_)     | |           | | (_)    | |  
-  \ \  / /__ _ _ __ | |_ _   _ ___| |_ _  ___| |_ 
-   \ \/ / _ \ | '_ \| __| | | / __| __| |/ _ \ __|
-    \  /  __/ | | | | |_| |_| \__ \ |_| |  __/ |_ 
-     \/ \___|_|_| |_|\__|\__,_|___/\__|_|\___|\__|
-");
+            // Use subclasses (polymorphism)
+            VirtualPet leoTheCat = new Cat("Leo", 12, true);
+            VirtualPet juniorTheParrot = new Parrot("Junior", 50, false);
+            VirtualPet callieTheUnicorn = new Unicorn("Callie", 250, true);
 
-            WriteLine("Welcome to the pet simulator!");
-            WriteLine("");
+            var pets = new List<VirtualPet> { leoTheCat, juniorTheParrot, callieTheUnicorn };
 
-            // First pet
-            VirtualPet leoTheCat = new VirtualPet("Leo", 12, "Cat", true);
-            // leoTheCat.ExperiencePoints = 10; // Error: private
+            // Shared actions via interface
+            var actions = new List<IPetAction> { new FeedAction(), new PlayAction(), new NapAction() };
 
-            WriteLine("> Pet 1");
-            leoTheCat.Greet();
-            leoTheCat.Eat("some dry food");
-            WriteLine("");
+            int i = 1;
+            foreach (var pet in pets)
+            {
+                WriteLine($"> Pet {i++}");
+                pet.Greet();
+                pet.MakeSound();
+                foreach (var act in actions)
+                    act.Apply(pet); // same call, different behaviour = polymorphism
 
-            // Second pet
-            VirtualPet juniorTheParrot = new VirtualPet("Junior", 50, "Parrot", false);
-
-            WriteLine("> Pet 2");
-            juniorTheParrot.Greet();
-            juniorTheParrot.Eat("a worm");
-            juniorTheParrot.Sleep();
-            WriteLine("");
-
-            // Third pet
-            VirtualPet callieTheUnicorn = new VirtualPet("Callie", 250, "Unicorn", true);
-
-            WriteLine("> Pet 3");
-            callieTheUnicorn.Greet();
-            callieTheUnicorn.Eat("rainbows");
-            WriteLine("");
+                WriteLine("");
+            }
 
             WriteLine("Press any key to exit...");
             ReadKey();
