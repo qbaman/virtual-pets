@@ -1,18 +1,32 @@
-﻿using static System.Console;
+﻿using System;
+using static System.Console;
 
 namespace VirtualPetSimulator
 {
+    // Base class
     class VirtualPet
     {
-        // Fields
-        public string FullName;
-        public int Age;
-        public string Species;
-        public bool IsAwake;
+        public string FullName
+        {
+            get => _fullName;
+            set => _fullName = string.IsNullOrWhiteSpace(value) ? "Unknown" : value.Trim();
+        }
+        private string _fullName = "Unknown";
+
+        public int Age
+        {
+            get => _age;
+            set => _age = Math.Max(0, value);    
+        }
+        private int _age;
+
+        public string Species { get; protected set; } = "Pet";
+
+        public bool IsAwake { get; private set; } = true;
 
         private int ExperiencePoints;
+        public int Level => 1 + ExperiencePoints / 100;
 
-        // Constructor
         public VirtualPet(string petName, int petAge, string petSpecies, bool petIsAwake)
         {
             FullName = petName;
@@ -20,24 +34,35 @@ namespace VirtualPetSimulator
             Species = petSpecies;
             IsAwake = petIsAwake;
         }
-
-        // Methods
-        public void Greet()
+        public virtual void Greet()
         {
-            WriteLine($"My name is {FullName}, the {Species}!");
+            WriteLine($"My name is {FullName}, the {Species} (Lv. {Level})!");
             WriteLine($"I am {Age} years old.");
             WriteLine($"Is awake? {IsAwake}.");
         }
 
-        public void Sleep()
+        public virtual void Sleep()
         {
             IsAwake = false;
-            WriteLine($"{FullName} is now happily snoring... Zzzzz");
+            WriteLine($"{FullName} curls up and snores... Zzzzz");
         }
 
-        public void Eat(string foodName)
+        public virtual void Wake()
         {
-            WriteLine($"{FullName} is now eating {foodName}.");
+            IsAwake = true;
+            WriteLine($"{FullName} wakes up and stretches.");
         }
+
+        public virtual void Eat(string foodName)
+        {
+            GainXP(15);
+            WriteLine($"{FullName} is eating {foodName} (+15 XP).");
+        }
+
+        public virtual void MakeSound()
+        {
+            WriteLine($"{FullName} makes a happy pet noise.");
+        }
+        protected void GainXP(int amount) => ExperiencePoints = Math.Max(0, ExperiencePoints + amount);
     }
 }
