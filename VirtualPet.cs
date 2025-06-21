@@ -2,10 +2,9 @@
 {
     class VirtualPet
     {
-        // Field
-        // public = access modifier
-        // string = type
-        // FullName = identifier
+        // Fields
         public string FullName;
+        public int Age;
+        public string Species;
     }
 }
