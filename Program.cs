@@ -8,8 +8,22 @@ namespace VirtualPetSimulator
     {
         static void Main(string[] args)
         {
-            Title = "=== Virtual Pet Simulator ===";
-            WriteLine("Welcome to the pet simulator!\n");
+            Title = "Virtual Pet Simulator ";
+
+            WriteLine(@"
+ ███████████  ██████████ ███████████     █████████  █████ ██████   ██████
+░░███░░░░░███░░███░░░░░█░█░░░███░░░█    ███░░░░░███░░███ ░░██████ ██████ 
+ ░███    ░███ ░███  █ ░ ░   ░███  ░    ░███    ░░░  ░███  ░███░█████░███ 
+ ░██████████  ░██████       ░███       ░░█████████  ░███  ░███░░███ ░███ 
+ ░███░░░░░░   ░███░░█       ░███        ░░░░░░░░███ ░███  ░███ ░░░  ░███ 
+ ░███         ░███ ░   █    ░███        ███    ░███ ░███  ░███      ░███ 
+ █████        ██████████    █████      ░░█████████  █████ █████     █████
+░░░░░        ░░░░░░░░░░    ░░░░░        ░░░░░░░░░  ░░░░░ ░░░░░     ░░░░░ 
+");
+
+            WriteLine("Welcome to the pet simulator!");
+            WriteLine("");
+
 
             // Use subclasses (polymorphism)
             VirtualPet leoTheCat = new Cat("Leo", 12, true);
