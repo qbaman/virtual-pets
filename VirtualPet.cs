@@ -10,10 +10,9 @@ namespace VirtualPetSimulator
         public string Species;
         public bool IsAwake;
 
-        // Private field (not accessible from Program.cs)
         private int ExperiencePoints;
 
-        // Methods / behaviours
+        // Methods
         public void Greet()
         {
             WriteLine($"My name is {FullName}, the {Species}!");
@@ -27,9 +26,10 @@ namespace VirtualPetSimulator
             WriteLine($"{FullName} is now happily snoring... Zzzzz");
         }
 
-        public void Eat()
+        // Takes food as a parameter
+        public void Eat(string foodName)
         {
-            WriteLine($"{FullName} is now eating.");
+            WriteLine($"{FullName} is now eating {foodName}.");
         }
     }
 }
