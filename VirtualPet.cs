@@ -2,8 +2,10 @@
 
 namespace VirtualPetSimulator
 {
-    public class VirtualPet   // ← make it public
+    // Must be public so public interfaces/actions can accept it
+    public class VirtualPet
     {
+        // Simple fields (keep as-is for now)
         public string FullName;
         public int Age;
         public string Species;
@@ -19,28 +21,35 @@ namespace VirtualPetSimulator
             IsAwake = petIsAwake;
         }
 
-        public void Greet()
+        // Mark as virtual so subclasses can override
+        public virtual void Greet()
         {
             WriteLine($"My name is {FullName}, the {Species}!");
             WriteLine($"I am {Age} years old.");
             WriteLine($"Is awake? {IsAwake}.");
         }
 
-        public void Sleep()
+        public virtual void Sleep()
         {
             IsAwake = false;
             WriteLine($"{FullName} is now happily snoring... Zzzzz");
         }
 
-        public void Wake()   // ← add this so PlayAction compiles
+        public virtual void Wake()
         {
             IsAwake = true;
             WriteLine($"{FullName} wakes up and stretches.");
         }
 
-        public void Eat(string foodName)
+        public virtual void Eat(string foodName)
         {
             WriteLine($"{FullName} is now eating {foodName}.");
+        }
+
+        // New: base MakeSound so Program can call it on VirtualPet
+        public virtual void MakeSound()
+        {
+            WriteLine($"{FullName} makes a happy pet noise.");
         }
     }
 }
