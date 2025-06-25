@@ -1,5 +1,4 @@
-﻿using System;
-using static System.Console;
+﻿using static System.Console;
 
 namespace VirtualPetSimulator
 {
@@ -11,15 +10,26 @@ namespace VirtualPetSimulator
         public string Species;
         public bool IsAwake;
 
-        // private field (cannot be accessed directly in Program.cs)
+        // Private field (not accessible from Program.cs)
         private int ExperiencePoints;
 
-        // Method
+        // Methods / behaviours
         public void Greet()
         {
             WriteLine($"My name is {FullName}, the {Species}!");
             WriteLine($"I am {Age} years old.");
             WriteLine($"Is awake? {IsAwake}");
+        }
+
+        public void Sleep()
+        {
+            IsAwake = false;
+            WriteLine($"{FullName} is now happily snoring... Zzzzz");
+        }
+
+        public void Eat()
+        {
+            WriteLine($"{FullName} is now eating.");
         }
     }
 }

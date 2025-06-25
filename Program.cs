@@ -19,18 +19,23 @@ namespace VirtualPetSimulator
             WriteLine("Welcome to the pet simulator!");
             WriteLine("");
 
-            // First pet
+            // VirtualPet   = a new type
+            // leo          = identifier
+            // new VirtualPet() = constructs a VirtualPet object
             VirtualPet leoTheCat = new VirtualPet();
             leoTheCat.FullName = "Leo";
             leoTheCat.Age = 12;
             leoTheCat.Species = "Cat";
             leoTheCat.IsAwake = true;
 
+            // This would cause an error because ExperiencePoints is private:
+            // leoTheCat.ExperiencePoints = 10;
+
             WriteLine("> Pet 1");
-            leoTheCat.Greet();
+            leoTheCat.Greet();   // invoke method
+            leoTheCat.Eat();     // invoke method
             WriteLine("");
 
-            // Second pet
             VirtualPet juniorTheParrot = new VirtualPet();
             juniorTheParrot.FullName = "Junior";
             juniorTheParrot.Age = 50;
@@ -39,6 +44,7 @@ namespace VirtualPetSimulator
 
             WriteLine("> Pet 2");
             juniorTheParrot.Greet();
+            juniorTheParrot.Sleep();
             WriteLine("");
 
             WriteLine("Press any key to exit...");
