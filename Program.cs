@@ -24,10 +24,12 @@ namespace VirtualPetSimulator
             leoTheCat.FullName = "Leo";
             leoTheCat.Age = 12;
             leoTheCat.Species = "Cat";
+            leoTheCat.IsAwake = true;
 
             WriteLine("> Pet 1");
             WriteLine($"My name is {leoTheCat.FullName}, the {leoTheCat.Species}.");
             WriteLine($"I am {leoTheCat.Age} years old.");
+            WriteLine($"Is awake? {leoTheCat.IsAwake}");
             WriteLine("");
 
             // Second pet
@@ -35,10 +37,12 @@ namespace VirtualPetSimulator
             juniorTheParrot.FullName = "Junior";
             juniorTheParrot.Age = 50;
             juniorTheParrot.Species = "Parrot";
+            juniorTheParrot.IsAwake = false;
 
             WriteLine("> Pet 2");
             WriteLine($"My name is {juniorTheParrot.FullName}, the {juniorTheParrot.Species}.");
             WriteLine($"I am {juniorTheParrot.Age} years old.");
+            WriteLine($"Is awake? {juniorTheParrot.IsAwake}");
             WriteLine("");
 
             WriteLine("Press any key to exit...");
