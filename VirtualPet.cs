@@ -12,12 +12,21 @@ namespace VirtualPetSimulator
 
         private int ExperiencePoints;
 
+        // Constructor
+        public VirtualPet(string petName, int petAge, string petSpecies, bool petIsAwake)
+        {
+            FullName = petName;
+            Age = petAge;
+            Species = petSpecies;
+            IsAwake = petIsAwake;
+        }
+
         // Methods
         public void Greet()
         {
             WriteLine($"My name is {FullName}, the {Species}!");
             WriteLine($"I am {Age} years old.");
-            WriteLine($"Is awake? {IsAwake}");
+            WriteLine($"Is awake? {IsAwake}.");
         }
 
         public void Sleep()
@@ -26,7 +35,6 @@ namespace VirtualPetSimulator
             WriteLine($"{FullName} is now happily snoring... Zzzzz");
         }
 
-        // Takes food as a parameter
         public void Eat(string foodName)
         {
             WriteLine($"{FullName} is now eating {foodName}.");
