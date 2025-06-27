@@ -1,5 +1,4 @@
 ﻿using System;
-using virtual_pets;
 using static System.Console;
 
 namespace VirtualPetSimulator
@@ -19,11 +18,14 @@ namespace VirtualPetSimulator
 
             WriteLine("Welcome to the pet simulator!");
 
-            // VirtualPet   = a new type (class)
-            // leo          = identifier (object name)
-            // new VirtualPet() = constructs a VirtualPet object
-            VirtualPet leo = new VirtualPet();
-            VirtualPet junior = new VirtualPet();
+            // First pet
+            VirtualPet leoTheCat = new VirtualPet();
+            leoTheCat.FullName = "Leo";
+            WriteLine("> Pet 1");
+            WriteLine($"My name is {leoTheCat.FullName}.");
+
+            // Second pet
+            VirtualPet juniorTheParrot = new VirtualPet();
 
             WriteLine("Press any key to exit...");
             ReadKey();

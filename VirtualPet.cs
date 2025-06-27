@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace virtual_pets
+﻿namespace VirtualPetSimulator
 {
-    internal class VirtualPet
+    class VirtualPet
     {
+        // Field
+        // public = access modifier
+        // string = type
+        // FullName = identifier
+        public string FullName;
     }
 }
